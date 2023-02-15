@@ -1,6 +1,35 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import calculate from '../logic/calculate';
+import OrangeBtn from './OrangeBtn';
+import GrayBtn from './GrayBtn';
 
 function Calculator() {
+  const [calculator, setCalculator] = useState(
+    {
+      total: null,
+      next: null,
+      operation: null,
+    },
+  );
+
+  const [displayNumber, setDisplayNumber] = useState('0');
+
+  const byPassNext = (calculator) => {
+    if (calculator.next) {
+      return setDisplayNumber(calculator.next);
+    }
+    if (calculator.total) {
+      return setDisplayNumber(calculator.total);
+    }
+    return setDisplayNumber('0');
+  };
+  const clickCalc = (value) => {
+    const newCalculator = calculate(calculator, value);
+    setCalculator(newCalculator);
+    byPassNext(newCalculator);
+  };
+
   return (
     <div
       style={{
@@ -17,7 +46,9 @@ function Calculator() {
           flex: 1,
         }}
       >
-        <Display numberParent={0} />
+        <Display
+          numberParent={displayNumber}
+        />
       </div>
       <div className="calc-numbers">
         <div
@@ -28,10 +59,10 @@ function Calculator() {
           }}
           className="line"
         >
-          <GrayBtn string="AC" />
-          <GrayBtn string="+/-" />
-          <GrayBtn string="%" />
-          <OrangeBtn string="/" />
+          <GrayBtn string="AC" clickCalc={clickCalc} />
+          <GrayBtn string="+/-" clickCalc={clickCalc} />
+          <GrayBtn string="%" clickCalc={clickCalc} />
+          <OrangeBtn string="÷" first clickCalc={clickCalc} />
         </div>
         <div
           style={{
@@ -41,10 +72,10 @@ function Calculator() {
           }}
           className="line"
         >
-          <GrayBtn string="7" />
-          <GrayBtn string="8" />
-          <GrayBtn string="9" />
-          <OrangeBtn string="x" />
+          <GrayBtn string="7" clickCalc={clickCalc} />
+          <GrayBtn string="8" clickCalc={clickCalc} />
+          <GrayBtn string="9" clickCalc={clickCalc} />
+          <OrangeBtn string="x" clickCalc={clickCalc} />
         </div>
         <div
           style={{
@@ -54,10 +85,10 @@ function Calculator() {
           }}
           className="line"
         >
-          <GrayBtn string="4" />
-          <GrayBtn string="5" />
-          <GrayBtn string="6" />
-          <OrangeBtn string="-" />
+          <GrayBtn string="4" clickCalc={clickCalc} />
+          <GrayBtn string="5" clickCalc={clickCalc} />
+          <GrayBtn string="6" clickCalc={clickCalc} />
+          <OrangeBtn string="-" clickCalc={clickCalc} />
         </div>
         <div
           style={{
@@ -67,10 +98,10 @@ function Calculator() {
           }}
           className="line"
         >
-          <GrayBtn string="1" />
-          <GrayBtn string="2" />
-          <GrayBtn string="3" />
-          <OrangeBtn string="+" />
+          <GrayBtn string="1" clickCalc={clickCalc} />
+          <GrayBtn string="2" clickCalc={clickCalc} />
+          <GrayBtn string="3" clickCalc={clickCalc} />
+          <OrangeBtn string="+" clickCalc={clickCalc} />
         </div>
         <div
           style={{
@@ -80,79 +111,14 @@ function Calculator() {
           }}
           className="line"
         >
-          <GrayBtn string="0" big />
-          <GrayBtn string="." />
-          <OrangeBtn string="=" />
+          <GrayBtn string="0" clickCalc={clickCalc} big />
+          <GrayBtn string="." clickCalc={clickCalc} />
+          <OrangeBtn string="=" clickCalc={clickCalc} />
         </div>
       </div>
     </div>
   );
 }
-
-function OrangeBtn(props) {
-  const { string } = props;
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flex: 1,
-        color: 'black',
-        background: 'orange',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: '#dfdfdf',
-        borderTop: 0,
-      }}
-    >
-      {string}
-    </div>
-  );
-}
-
-OrangeBtn.defaultProps = {
-  string: 0,
-};
-
-OrangeBtn.propTypes = {
-  string: PropTypes.string,
-};
-
-function GrayBtn(props) {
-  const { string } = props;
-  const { big } = props;
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flex: big ? 2 : 1,
-        height: 50,
-        color: 'black',
-        background: '#dfdfdf',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: 'gray',
-        paddingLeft: big ? 1 : 0,
-        boxSizing: 'border-box',
-      }}
-    >
-      {string}
-    </div>
-  );
-}
-
-GrayBtn.defaultProps = {
-  string: 0,
-  big: false,
-};
-
-GrayBtn.propTypes = {
-  string: PropTypes.string,
-  big: PropTypes.bool,
-};
 
 function Display(props) {
   const { numberParent } = props;
@@ -165,8 +131,10 @@ function Display(props) {
         color: 'white',
         background: 'gray',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         boxSizing: 'border-box',
+        paddingRight: 8,
+        paddingLeft: 8,
       }}
     >
       {numberParent}
@@ -175,11 +143,11 @@ function Display(props) {
 }
 
 Display.defaultProps = {
-  numberParent: 0,
+  numberParent: '0',
 };
 
 Display.propTypes = {
-  numberParent: PropTypes.number,
+  numberParent: PropTypes.string,
 };
 
 export default Calculator;
