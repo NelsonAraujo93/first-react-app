@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import calculate from '../logic/calculate';
+import OrangeBtn from './OrangeBtn';
+import GrayBtn from './GrayBtn';
 
 function Calculator() {
   const [calculator, setCalculator] = useState(
@@ -117,85 +119,6 @@ function Calculator() {
     </div>
   );
 }
-
-function OrangeBtn(props) {
-  const { string } = props;
-  const { clickCalc } = props;
-  const { first } = props;
-  return (
-    <button
-      type="button"
-      onClick={() => { clickCalc(string); }}
-      style={{
-        display: 'flex',
-        flex: 1,
-        color: 'black',
-        background: 'orange',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        boxSizing: 'border-box',
-        borderTopColor: first ? 'gray' : '#efefef',
-        borderTopWidth: first ? 1 : 0,
-      }}
-    >
-      {string}
-    </button>
-  );
-}
-
-OrangeBtn.defaultProps = {
-  string: '',
-  first: false,
-  clickCalc: () => {},
-};
-
-OrangeBtn.propTypes = {
-  string: PropTypes.string,
-  first: PropTypes.bool,
-  clickCalc: PropTypes.func,
-};
-
-function GrayBtn(props) {
-  const { string } = props;
-  const { big } = props;
-  const { clickCalc } = props;
-  return (
-    <button
-      type="button"
-      onClick={() => { clickCalc(string); }}
-      style={{
-        display: 'flex',
-        flex: big ? 2 : 1,
-        height: 50,
-        color: 'black',
-        background: '#dfdfdf',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: 'gray',
-        paddingLeft: big ? 8 : 0,
-        boxSizing: 'border-box',
-      }}
-    >
-      {string}
-    </button>
-  );
-}
-
-GrayBtn.defaultProps = {
-  string: 0,
-  big: false,
-  clickCalc: () => {},
-};
-
-GrayBtn.propTypes = {
-  string: PropTypes.string,
-  big: PropTypes.bool,
-  clickCalc: PropTypes.func,
-};
 
 function Display(props) {
   const { numberParent } = props;
