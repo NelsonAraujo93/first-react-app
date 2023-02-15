@@ -28,12 +28,6 @@ function Calculator() {
     byPassNext(newCalculator);
   };
 
-  /*
-  const clickOperation = (value) => {
-    setCurrentNumber(value);
-  };
-  */
-
   return (
     <div
       style={{
