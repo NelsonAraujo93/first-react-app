@@ -12,7 +12,7 @@ function RouterNav() {
       <BrowserRouter className="app-container">
         <Navbar />
         <Routes>
-          <Route exact path="home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route exact path="calculator" element={<Calculator />} />
           <Route path="quote" element={<Quote />} />
           <Route path="*" element={<ErrorPage />} />

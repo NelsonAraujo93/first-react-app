@@ -8,7 +8,7 @@ function Navbar() {
       <ul className={styles.ul}>
         <li className={styles.li}>
           <NavLink
-            to="home"
+            to="/"
             className={({ isActive }) => {
               const active = isActive ? styles.active : styles.navLink;
               return active;
