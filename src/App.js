@@ -1,10 +1,10 @@
 import './App.css';
-import Calculator from './components/Calculator';
+import RouterNav from './Router';
 
 function App() {
   return (
     <section>
-      <Calculator />
+      <RouterNav />
     </section>
   );
 }

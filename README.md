@@ -95,7 +95,7 @@ In order to run this project you need:
 
 ### Setup
 
-In order to run this project you need: clone this repo [https://github.com/NelsonAraujo93/JavaScriptCapstoneModule2.git]
+In order to run this project you need: clone this repo [https://github.com/NelsonAraujo93/first-react-app.git]
 
 
 ### Install

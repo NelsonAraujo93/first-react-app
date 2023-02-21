@@ -21,6 +21,7 @@ function GrayBtn(props) {
         borderColor: 'gray',
         paddingLeft: big ? 8 : 0,
         boxSizing: 'border-box',
+        cursor: 'pointer',
       }}
     >
       {string}
