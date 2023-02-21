@@ -13,21 +13,9 @@ function Calculator() {
     },
   );
 
-  const [displayNumber, setDisplayNumber] = useState('0');
-
-  const byPassNext = (calculator) => {
-    if (calculator.next) {
-      return setDisplayNumber(calculator.next);
-    }
-    if (calculator.total) {
-      return setDisplayNumber(calculator.total);
-    }
-    return setDisplayNumber('0');
-  };
   const clickCalc = (value) => {
     const newCalculator = calculate(calculator, value);
     setCalculator(newCalculator);
-    byPassNext(newCalculator);
   };
 
   return (
@@ -47,7 +35,7 @@ function Calculator() {
         }}
       >
         <Display
-          numberParent={displayNumber}
+          numberParent={calculator.next || calculator.total || '0'}
         />
       </div>
       <div className="calc-numbers">
