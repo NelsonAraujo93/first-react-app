@@ -20,6 +20,7 @@ function OrangeBtn(props) {
         boxSizing: 'border-box',
         borderTopColor: first ? 'gray' : '#efefef',
         borderTopWidth: first ? 1 : 0,
+        cursor: 'pointer',
       }}
     >
       {string}
