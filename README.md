@@ -68,17 +68,12 @@ Math Magicians - React App, is a project to learn and test my knowledge in React
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO 
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://nelsonaraujo93.github.io/JavaScriptCapstoneModule2/)
- 
- ## - Description video link <a name="presentation"></a>
-   
-   [JavaScript Capstone Project Module 2](https://drive.google.com/file/d/1eH77grxb9fznYb1KocOmjBizvLIONUsk/view?usp=share_link)
+- [Math Magicians - React App](https://react-math-app.onrender.com)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>-->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
